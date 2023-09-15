@@ -99,7 +99,7 @@ main{
 .grid-container{
     margin: 1em;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1em;
     border-bottom: 2px solid var(--orange);
     padding-bottom: 1em;
@@ -107,32 +107,32 @@ main{
 
 @media (min-width: 550px){
     .grid-container{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 @media (min-width: 900px) {
     .grid-container{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
     }
 }
 @media (min-width: 1200px) {
     .grid-container{
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(8, 1fr);
     }
 }
 @media (min-width: 1500px) {
     .grid-container{
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(10, 1fr);
     }
 }
 @media (min-width: 1800px) {
     .grid-container{
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(12, 1fr);
     }
 }
 @media (min-width: 2100px) {
     .grid-container{
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(14, 1fr);
     }
 }
 
@@ -141,7 +141,7 @@ main{
     cursor: pointer;
     position: relative;
     max-width: 90vw;
-    min-height: 50vh;
+    min-height: 25vh;
     background-size: cover;
     color: var(--white);
     text-shadow: 1px 1px 0 var(--dark-blue), 0 0 0 var(--dark-blue);
