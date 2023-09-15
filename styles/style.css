@@ -1,0 +1,536 @@
+/* ========== GLOBAL STYLES ========== */
+:root{
+    --dark-blue: #011627;
+    --white: rgb(253, 255, 252);
+    --cyan: #2ec4b6;
+    --red: #e71d36;
+    --orange: #ff9f1c;
+    --light-grey: #EFEFEF;
+    --green: #5cd73f;
+    --yellow: #e8d929;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-color: var(--light-grey);
+    font-family: Cambria, sans-serif;
+    margin: 0;
+    color: var(--dark-blue);
+}
+
+a{
+    text-decoration: none;
+    color: var(--dark-blue);
+}
+dialog{
+    z-index: 9999;
+}
+/* ========== BUTTON STYLES ========== */
+
+button{
+    background-color: var(--white);
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+}
+button:hover, #filter-sort-button:hover,
+#reverse-alphabetical-sort:hover, #alphabetical-sort:hover{
+    box-shadow: 0 0 2px 0 black inset;
+}
+
+
+/* ========== HEADER STYLES ========== */
+header{
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--white);
+    align-items: center;
+    padding: 2vh 0 2vh 0;
+    color: var(--dark-blue);
+    z-index: 9999;
+    user-select: none;
+}
+#add-artist-dialog-button{
+    aspect-ratio: 1;
+    min-height: 4em;
+    height: 100%;
+    background-image: url("../icons/plus-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--white);
+}
+#add-artist-dialog-button:hover{
+    background-color: var(--light-grey);
+}
+
+#artist-search-div{
+    background-color: var(--light-grey);
+    border-radius: 3em;
+    display: flex;
+    align-items: center;
+    padding: 0 1em 0 1em;
+}
+#artist-search-div img{
+    max-width: 1.5em;
+}
+#artist-search{
+    height: 4em;
+    min-width: 30vw;
+    width: 100%;
+    border-radius: 3em;
+    border: none;
+    background-color: transparent;
+}
+#artist-search:focus{
+    outline: none;
+}
+.filter-sort{
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.77);
+    width: 100%;
+    position: fixed;
+    top: calc(12vh + 0.5em);
+    padding: 0.5em 0.5em 0.5em;
+    z-index: 999999;
+    gap: 1em;
+    justify-content: center;
+}
+#filter-sort img{
+    max-width: 1.5em;
+}
+#filter-sort-button{
+    cursor: pointer;
+    border-radius: 0.5em;
+    padding: 2px;
+    justify-self: right;
+    background-color: var(--light-grey);
+}
+#artist-filter-by__genre{
+    width: 5em;
+    height: 2em;
+    background-color: var(--light-grey);
+    border-radius: 0.5em;
+}
+#alphabetical-sort, #reverse-alphabetical-sort{
+    display: inline-block;
+    border-radius: 0.5em;
+    cursor: pointer;
+    width: fit-content;
+    padding: 2px;
+}
+.button-inset{
+    box-shadow: 0 0 2px 0 black inset;
+    background-color: var(--light-grey);
+}
+@media (max-width: 420px) {
+    header {
+        text-align: left;
+        height: auto;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto;
+    }
+    header h1{
+        width: fit-content;
+    }
+    #add-artist-dialog-button{
+        grid-row: 1/2;
+        grid-column: 2/2;
+        height: unset;
+    }
+    #artist-search-div{
+        grid-column: span 2;
+    }
+    #artist-search{
+        height: 3em;
+    }
+    #filter-sort{
+        top: 20vh;
+    }
+}
+
+
+/* ========== MAIN CONTENT STYLES ========== */
+main{
+    padding-top: 12vh;
+}
+@media (max-width: 420px) {
+    main{
+        padding-top: 25vh;
+    }
+}
+#artist-detail-dialog{
+    width: 100%;
+    max-width: 700px;
+    border: none;
+    position: fixed;
+    max-height: 100vh;
+    overflow: hidden;
+    background-color: var(--light-grey);
+}
+.dialog-close-button{
+    background-color: var(--red);
+}
+.dialog-close-button:hover{
+    background-color: var(--red);
+    filter: grayscale(0.2);
+}
+.form-dialog{
+    background-color: var(--white);
+    padding: 0 0 0.5em 0;
+    border: none;
+    border-radius: 0.5em;
+    overflow: hidden;
+    max-height: 100vh;
+}
+.artist-form{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: var(--dark-blue);
+}
+.artist-form input, .artist-form textarea{
+    width: 100%;
+    border: none;
+    min-height: 2em;
+    border-radius: 0.5em;
+}
+.artist-form-shortdescription-div{
+    grid-column: span 2;
+}
+.artist-form-shortdescription-div textarea{
+    width: 100%;
+}
+.artist-form h2{
+    text-align: center;
+    font-size: 1em;
+}
+.artist-form .dialog-close-button{
+    position: absolute;
+    top: 0;
+    right: 1em;
+}
+.artist-form fieldset{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.5em;
+    column-gap: 1em;
+    text-align: left;
+    border: none;
+    background-color: var(--light-grey);
+    color: var(--dark-blue);
+    border-radius: 0.5em;
+}
+.artist-form__buttons{
+    padding-top: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.artist-form__submit-button, .artist-form__clear-button{
+    min-height: 2em;
+}
+.artist-form__submit-button{
+    background-color: var(--green);
+    color: var(--white);
+    font-size: 1.2em;
+    padding: 0 1em 0 1em;
+}
+.artist-form__clear-button{
+    height: 3em;
+    width: 6em;
+}
+#dialog-delete{
+    min-height: 25vh;
+    min-width: 50vw;
+    padding: 1em;
+    align-content: center;
+    justify-content: center;
+}
+#form-delete{
+    padding: 1em;
+    position: relative;
+    min-width: 50vw;
+    height: 25vh;
+}
+#form-delete__text{
+    margin-top: 10%;
+    font-size: 1.4em;
+}
+#form-delete__buttons{
+    position: absolute;
+    grid-template-columns: 1fr 1fr;
+    width: calc(50% - 1em);
+    bottom: 0;
+    left: 25%;
+    gap: 1em;
+}
+#form-delete__cancel-button{
+    background-color: var(--light-grey);
+    width: 100%;
+    position: unset;
+}
+@media (max-width: 420px) {
+    #dialog-delete{
+        height: 40vh;
+    }
+    #form-delete{
+        height: 80%;
+    }
+}
+@media (min-width: 1500px){
+    #form-delete__text{
+        font-size: 2em;
+    }
+}
+#artist-detail-dialog article{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: var(--dark-blue);
+}
+#detail-artist__image-and-info{
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 0.5em;
+    overflow: clip;
+}
+#detail-artist__image{
+    height: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+}
+#detail-artist__general-info{
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+#detail-artist__lists{
+    margin-top: 3em;
+    padding: 1em;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 0.5em;
+}
+#detail-artist__lists div{
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+#detail-artist__lists div:first-child{
+    background-color: var(--dark-blue);
+    color: var(--light-grey);
+}
+#detail-artist__lists div:nth-child(2){
+    background-color: var(--white);
+}
+#detail-artist__lists div:last-child{
+    background-color: var(--orange);
+}
+#detail-artist__lists ul{
+    list-style: "-";
+}
+#artist-detail-dialog img{
+    border-radius: 0.5em;
+    width: 100%;
+}
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.63);
+}
+#detail-dialog__buttons{
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(5, auto);
+}
+
+/* ========== GRID STYLES ========== */
+
+.grid-container{
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 1em;
+}
+
+@media (min-width: 550px){
+    .grid-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 900px) {
+    .grid-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 1200px) {
+    .grid-container{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (min-width: 1500px) {
+    .grid-container{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media (min-width: 1800px) {
+    .grid-container{
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+@media (min-width: 2100px) {
+    .grid-container{
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+.grid-container article{
+    padding: 1em 1em 0 1em;
+    cursor: pointer;
+    position: relative;
+    max-width: 90vw;
+    min-height: 50vh;
+    background-size: cover;
+    color: var(--white);
+    text-shadow: 1px 1px 0 var(--dark-blue), 0 0 0 var(--dark-blue);
+}
+.grid-container article:hover{
+    box-shadow: 0 0 10px 0 var(--white) inset;
+}
+.grid-container article button,
+#detail-dialog__buttons button,
+.dialog-close-button{
+    width: 3em;
+    height: 3em;
+}
+.grid-container article button img,
+.dialog-close-button img{
+    width: 100%;
+}
+.delete-button:hover{
+    background-color: var(--red);
+}
+.edit-button:hover{
+    background-color: var(--yellow);
+}
+#artists .favorite-button:hover{
+    background-color: var(--green);
+}
+#favorites .favorite-button:hover{
+    background-color: var(--orange);
+}
+.website-button:hover{
+    background-color: var(--cyan);
+}
+.artist-buttons{
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(4, auto);
+}
+.artist-info{
+    position: absolute;
+    bottom: 5em;
+    left: 1em;
+}
+@media (max-height: 450px){
+    .artist-info{
+        bottom: 1em;
+        left: 1em;
+    }
+}
+@media (max-height: 300px) {
+    .artist-info{
+        bottom: 0;
+        left: 0;
+    }
+}
+
+/* ========== TOAST MESSAGE STYLES ========== */
+
+.toast-container {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    z-index: 99999;
+}
+
+.toast {
+    display: inline-block;
+    padding: 1em 2em;
+    margin-bottom: 0;
+    color: white;
+    border-radius: 0.5em;
+    font-size: 1.5em;
+    pointer-events: none;
+}
+
+.toast.success {
+    background-color: #2ecc71;
+}
+
+.toast.error {
+    background-color: #e74c3c;
+}
+
+.fade-out{
+    animation-name: fade-out;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+    100%{
+        opacity: 0;
+    }
+}
+
+/* ========== DETAIL DIALOG TOOLTIP ========== */
+.tooltip {
+    transform-origin: bottom right;
+    float: right;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    border-radius: 0.5em;
+    z-index: 99999;
+}
+
+/* ========== FOOTER STYLES ========== */
+
+footer{
+    background-color: var(--dark-blue);
+    color: var(--light-grey);
+    padding: 1px;
+    text-align: center;
+    font-size: 0.75em;
+}
+footer a{
+    color: var(--cyan);
+}
+
+.hidden{
+    display: none;
+}
