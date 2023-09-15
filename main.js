@@ -1,6 +1,8 @@
 
 window.addEventListener("load", main);
 
-function main(){
+export const endpoint = "http://localhost:3000";
+
+async function main(){
 
 }
