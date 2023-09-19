@@ -9,8 +9,8 @@ export let albums = [];
 
 /**
  * fetch albums from server and locally cache
- * @returns {void}
- * @throws {Object} error message object from server
+ * @returns {Promise<void>}
+ * @throws {Error} error object received from server
  */
 export async function getAlbums(){
 	const res = await fetch(endpoint + "/albums");
@@ -24,7 +24,7 @@ export async function getAlbums(){
  * gets specific album by id
  * @param {number} albumId id of album to get
  * @returns {Promise<Album>} album object
- * @throws {Object} error object from server
+ * @throws {Error} error object from server if the request fails
  */
 export async function getSpecificAlbum(albumId) {
 	const res = await fetch(endpoint + "/albums/" + albumId);
@@ -38,7 +38,8 @@ export async function getSpecificAlbum(albumId) {
 /**
  * search for albums on server
  * @param {string} searchValue search value
- * @returns {Promise<Album[]>} array of albums that matches search
+ * @returns {Promise<void>} array of albums that matches search
+ * @throws {Error} error object from server if the request fails
  */
 export async function searchAlbums(searchValue){
 	albums = [];
