@@ -96,7 +96,7 @@ main{
 
 /* ========== GRID STYLES ========== */
 
-.grid-container{
+#artist-grid{
     margin: 1em;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -105,46 +105,82 @@ main{
     padding-bottom: 1em;
 }
 
+#album-grid{
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 1em;
+}
+
 @media (min-width: 550px){
-    .grid-container{
+    #artist-grid{
         grid-template-columns: repeat(4, 1fr);
+    }
+    #album-grid{
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 @media (min-width: 900px) {
-    .grid-container{
+    #artist-grid{
         grid-template-columns: repeat(6, 1fr);
+    }
+    #album-grid{
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 @media (min-width: 1200px) {
-    .grid-container{
+    #artist-grid{
         grid-template-columns: repeat(8, 1fr);
+    }
+    #album-grid{
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 @media (min-width: 1500px) {
-    .grid-container{
+    #artist-grid{
         grid-template-columns: repeat(10, 1fr);
+    }
+    #album-grid{
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 @media (min-width: 1800px) {
-    .grid-container{
+    #artist-grid{
         grid-template-columns: repeat(12, 1fr);
+    }
+    #album-grid{
+        grid-template-columns: repeat(6, 1fr);
     }
 }
 @media (min-width: 2100px) {
-    .grid-container{
+    #artist-grid{
         grid-template-columns: repeat(14, 1fr);
+    }
+    #album-grid{
+        grid-template-columns: repeat(7, 1fr);
     }
 }
 
 .grid-container article{
     padding: 1em 1em 0 1em;
-    cursor: pointer;
     position: relative;
     max-width: 90vw;
     min-height: 25vh;
     background-size: cover;
     color: var(--white);
     text-shadow: 1px 1px 0 var(--dark-blue), 0 0 0 var(--dark-blue);
+}
+
+
+#album-grid article{
+    min-height: 50vh;
+}
+#album-grid article div p{
+    display: block;
+    padding: 0;
+    margin: 0;
 }
 
 /* ========== FOOTER STYLES ========== */
