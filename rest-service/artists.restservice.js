@@ -8,8 +8,8 @@ export let artists = [];
 
 /**
  * fetch artists from server
- * @returns {void}
- * @throws {Object} error message object from server
+ * @returns {Promise<void>}
+ * @throws {Error} error object from server if the request fails
  */
 export async function getArtists(){
 	const res = await fetch(endpoint + "/artists");
@@ -22,7 +22,8 @@ export async function getArtists(){
 /**
  * search for artists on server
  * @param {string} searchValue search value
- * @returns {Promise<Artist[]>} array of artists that matches search
+ * @returns {Promise<void>}
+ * @throws {Error} error object from server if the request fails
  */
 export async function searchArtists(searchValue){
 	artists = [];
