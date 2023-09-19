@@ -4,6 +4,10 @@ import {searchTracks, tracks} from "../rest-service/tracks.restservice.js";
 import {displayArtists} from "../view/artists.view.js";
 import {displayAlbums} from "../view/albums.view.js";
 
+/**
+ * function to update the view from the search
+ * @returns {Promise<void>}
+ */
 export async function search(){
 	const searchBar = document.querySelector("#artist-search");
 	const searchValue = searchBar.value;
@@ -20,10 +24,21 @@ export async function search(){
 	}
 }
 
+/**
+ * function to update album array on track search
+ * @param {Album[]} albums array of albums
+ * @param {Track[]} tracks array of tracks to add albums from
+ * @returns {Promise<void>}
+ */
 async function getAlbumsFromTracks(albums, tracks){
-	for(const track of tracks){
-		if(!albums.find(album => album.id === track.album_id)){
-			albums.push(await getSpecificAlbum(track.album_id));
+	try{
+		for(const track of tracks){
+			if(!albums.find(album => album.id === track.album_id)){
+				albums.push(await getSpecificAlbum(track.album_id));
+			}
 		}
+	}
+	catch (err){
+		console.log(err);
 	}
 }
