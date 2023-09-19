@@ -36,7 +36,7 @@ export async function getSpecificAlbum(albumId) {
 
 
 /**
- * search for albums on server
+ * search for albums on server and update local cache
  * @param {string} searchValue search value
  * @returns {Promise<void>} array of albums that matches search
  * @throws {Error} error object from server if the request fails

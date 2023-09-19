@@ -8,8 +8,8 @@ export let tracks = [];
 
 /**
  * fetch tracks from server and caches locally
- * @returns {void}
- * @throws {Object} error message object from server
+ * @returns {Promise<void>}
+ * @throws {Error} error object from server if the request fails
  */
 export async function getTracks(){
 	const res = await fetch(endpoint + "/tracks");
@@ -20,9 +20,10 @@ export async function getTracks(){
 }
 
 /**
- * search for tracks on server
+ * search for tracks on server and update local cache
  * @param {string} searchValue search value
- * @returns {Promise<Track[]>} array of tracks that matches search
+ * @returns {Promise<void>} array of tracks that matches search
+ * @throws {Error} error object from server if the request fails
  */
 export async function searchTracks(searchValue){
 	tracks = [];

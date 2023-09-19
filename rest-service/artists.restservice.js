@@ -7,7 +7,7 @@ import {endpoint} from "../main.js";
 export let artists = [];
 
 /**
- * fetch artists from server
+ * fetch artists from server and cache locally
  * @returns {Promise<void>}
  * @throws {Error} error object from server if the request fails
  */
@@ -20,7 +20,7 @@ export async function getArtists(){
 }
 
 /**
- * search for artists on server
+ * search for artists on server and update local cache
  * @param {string} searchValue search value
  * @returns {Promise<void>}
  * @throws {Error} error object from server if the request fails
