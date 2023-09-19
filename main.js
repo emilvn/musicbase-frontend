@@ -1,9 +1,9 @@
-import {artists, getArtists} from "./rest-service/artists.restservice.js";
-import {albums, getAlbums} from "./rest-service/albums.restservice.js";
-import {getTracks, tracks} from "./rest-service/tracks.restservice.js";
-import {displayArtists} from "./view/artists.view.js";
-import {displayAlbums} from "./view/albums.view.js";
-import {setEventListeners} from "./controller/seteventlisteners.js";
+import {artists, getArtists} from "./src/rest-service/artists.restservice.js";
+import {albums, getAlbums} from "./src/rest-service/albums.restservice.js";
+import {getTracks, tracks} from "./src/rest-service/tracks.restservice.js";
+import {displayArtists} from "./src/view/artists.view.js";
+import {displayAlbums} from "./src/view/albums.view.js";
+import {setEventListeners} from "./src/controller/seteventlisteners.js";
 
 window.addEventListener("load", main);
 

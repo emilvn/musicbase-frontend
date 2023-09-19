@@ -1,4 +1,4 @@
-import {endpoint} from "../main.js";
+import {endpoint} from "../../main.js";
 
 /**
  * variable to locally cache tracks
