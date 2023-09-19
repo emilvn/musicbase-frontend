@@ -1,4 +1,7 @@
-
+/**
+ * display artists
+ * @param artists artists to display
+ */
 export function displayArtists(artists){
 	document.querySelector("#artist-grid").innerHTML = "";
 	for(const artist of artists){
@@ -6,6 +9,10 @@ export function displayArtists(artists){
 	}
 }
 
+/**
+ * display artist
+ * @param artist artist to display
+ */
 function displayArtist(artist){
 	const container = document.querySelector("#artist-grid");
 	const myHTML = /*html*/`

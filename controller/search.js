@@ -33,8 +33,8 @@ export async function search(){
 async function getAlbumsFromTracks(albums, tracks){
 	try{
 		for(const track of tracks){
-			if(!albums.find(album => album.id === track.album_id)){
-				albums.push(await getSpecificAlbum(track.album_id));
+			if(!albums.find(album => album.id === track.album_id)){ // if album doesn't match search
+				albums.push(await getSpecificAlbum(track.album_id)); // add album to cache
 			}
 		}
 	}
