@@ -1,5 +1,5 @@
 import {setEventListeners} from "./src/controller/seteventlisteners.js";
-import {updateView} from "./src/controller/updateView.js";
+import {updateView} from "./src/controller/updateview.js";
 
 window.addEventListener("load", main);
 

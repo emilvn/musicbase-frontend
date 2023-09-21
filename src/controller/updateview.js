@@ -3,7 +3,7 @@ import {albums, getAlbums} from "../rest-service/albums.restservice.js";
 import {getTracks, searchTracks, tracks} from "../rest-service/tracks.restservice.js";
 import {displayArtists} from "../view/artists.view.js";
 import {displayAlbums} from "../view/albums.view.js";
-import {getAlbumsToDisplay} from "./search.js";
+import {getAlbumsToDisplay} from "./getalbums.js";
 
 /**
  * updates the grids with the newest data from the database
@@ -34,7 +34,7 @@ export async function updateViewFromSearch(searchValue){
 		const tracksSearched = await searchTracks(searchValue);
 		const albumsToDisplay = await getAlbumsToDisplay(searchValue, artistsToDisplay, tracksSearched);
 		displayArtists(artistsToDisplay);
-		displayAlbums(albumsToDisplay, tracksSearched);
+		displayAlbums(albumsToDisplay, tracks);
 	}
 	catch (err){
 		throw err;

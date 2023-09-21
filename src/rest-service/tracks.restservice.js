@@ -5,6 +5,7 @@ import {endpoint} from "../../main.js";
  * @type {Track[]}
  */
 export let tracks = [];
+
 /**
  * fetch tracks from server and caches locally
  * @returns {Promise<void>}
