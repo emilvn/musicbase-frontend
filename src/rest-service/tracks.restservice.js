@@ -5,7 +5,7 @@ import {endpoint} from "../../main.js";
  * @type {Track[]}
  */
 export let tracks = [];
-
+export let tracksSearched = [];
 /**
  * fetch tracks from server and caches locally
  * @returns {Promise<void>}
@@ -26,10 +26,15 @@ export async function getTracks(){
  * @throws {Error} error object from server if the request fails
  */
 export async function searchTracks(searchValue){
-	tracks = [];
+	tracksSearched = [];
 	const res = await fetch(endpoint + "/search/tracks?q=" + searchValue);
 	if(!res.ok){
 		throw await res.json();
 	}
-	tracks = await res.json();
+	tracksSearched = await res.json();
+	for(const track of tracksSearched){
+		if(!tracks.find(t => t.name === track.name)){
+			tracks.push(track);
+		}
+	}
 }

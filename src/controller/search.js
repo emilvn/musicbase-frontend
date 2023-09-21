@@ -1,6 +1,6 @@
 import {artists, searchArtists} from "../rest-service/artists.restservice.js";
 import {albums, getSpecificAlbum, searchAlbums} from "../rest-service/albums.restservice.js";
-import {searchTracks, tracks} from "../rest-service/tracks.restservice.js";
+import {searchTracks, tracks, tracksSearched} from "../rest-service/tracks.restservice.js";
 import {displayArtists} from "../view/artists.view.js";
 import {displayAlbums} from "../view/albums.view.js";
 
@@ -15,7 +15,7 @@ export async function search(){
 		await searchArtists(searchValue);
 		await searchAlbums(searchValue);
 		await searchTracks(searchValue);
-		await getAlbumsFromTracks(albums, tracks);
+		await getAlbumsFromTracks(albums, tracksSearched);
 		displayArtists(artists);
 		displayAlbums(albums, tracks);
 	}
