@@ -1,9 +1,5 @@
-import {artists, getArtists} from "./src/rest-service/artists.restservice.js";
-import {albums, getAlbums} from "./src/rest-service/albums.restservice.js";
-import {getTracks, tracks} from "./src/rest-service/tracks.restservice.js";
-import {displayArtists} from "./src/view/artists.view.js";
-import {displayAlbums} from "./src/view/albums.view.js";
 import {setEventListeners} from "./src/controller/seteventlisteners.js";
+import {updateView} from "./src/controller/updateView.js";
 
 window.addEventListener("load", main);
 
@@ -20,13 +16,9 @@ export const endpoint = "https://musicbase-backend.azurewebsites.net";
 async function main(){
 	setEventListeners();
 	try{
-		await getArtists();
-		await getAlbums();
-		await getTracks();
+		await updateView();
 	}
 	catch(err){
 		console.log(err);
 	}
-	displayArtists(artists);
-	displayAlbums(albums, tracks);
 }
