@@ -23,7 +23,11 @@ export async function updateView(){
 	displayAlbums(albums, tracks);
 }
 
-
+/**
+ * update the view with the artists/albums that matches the search
+ * @param {string} searchValue
+ * @returns {Promise<void>}
+ */
 export async function updateViewFromSearch(searchValue){
 	try{
 		const artistsToDisplay = await searchArtists(searchValue);

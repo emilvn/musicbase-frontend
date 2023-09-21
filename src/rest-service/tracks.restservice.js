@@ -30,9 +30,4 @@ export async function searchTracks(searchValue){
 		throw await res.json();
 	}
 	return await res.json();
-	/*for(const track of tracksSearched){
-		if(!tracks.find(t => t.name === track.name)){
-			tracks.push(track);
-		}
-	}*/
 }

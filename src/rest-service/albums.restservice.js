@@ -20,21 +20,6 @@ export async function getAlbums(){
 }
 
 /**
- * gets specific album by id
- * @param {number} albumId id of album to get
- * @returns {Promise<Album>} album object
- * @throws {Error} error object from server if the request fails
- */
-export async function getSpecificAlbum(albumId) {
-	const res = await fetch(endpoint + "/albums/" + albumId);
-	if (!res.ok) {
-		throw await res.json();
-	}
-	return (await res.json())[0];
-}
-
-
-/**
  * search for albums on server and update local cache
  * @param {string} searchValue search value
  * @returns {Promise<Album[]>} array of albums that matches search
