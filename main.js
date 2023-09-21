@@ -11,7 +11,7 @@ window.addEventListener("load", main);
  * endpoint of server
  * @type {string}
  */
-export const endpoint = "http://localhost:3000";
+export const endpoint = "https://musicbase-backend.azurewebsites.net";
 
 /**
  * Initialize app
