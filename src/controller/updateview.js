@@ -22,8 +22,8 @@ export async function updateView(){
 	catch (err){
 		throw err;
 	}
-	const ArtistListRenderer = new ListRenderer(artists, document.querySelector("#artists"), ArtistRenderer);
-	const AlbumListRenderer = new ListRenderer(albums, document.querySelector("#albums"), AlbumRenderer);
+	const ArtistListRenderer = new ListRenderer(artists, document.querySelector("#artist-grid"), ArtistRenderer);
+	const AlbumListRenderer = new ListRenderer(albums, document.querySelector("#album-grid"), AlbumRenderer);
 	ArtistListRenderer.render();
 	AlbumListRenderer.render();
 }

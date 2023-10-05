@@ -10,7 +10,9 @@ export class Album extends Item{
 		super(AlbumData);
 		this.#_image = AlbumData.image;
 		this.#_artists = AlbumData.artists.map(artist => new Artist(artist));
-		this.#_tracks = AlbumData.tracks.map(track => new Track(track));
+		this.#_tracks =
+			AlbumData.tracks?.map(track => new Track(track))
+			?? [];
 	}
 	get image(){
 		return this.#_image;

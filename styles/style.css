@@ -63,6 +63,23 @@ header{
 #artist-search:focus{
     outline: none;
 }
+#add-album-button, #add-artist-button{
+    aspect-ratio: 1;
+    min-height: 4em;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--white);
+}
+#add-album-button{
+    background-image: url("../icons/add-album-icon.png");
+}
+#add-artist-button{
+    background-image: url("../icons/add-artist-icon.png");
+}
+#add-album-button:hover, #add-artist-button:hover{
+    background-color: var(--light-grey);
+}
 
 @media (max-width: 420px) {
     header {
@@ -83,7 +100,42 @@ header{
     }
 }
 
+/* ========== BUTTON STYLES ========== */
 
+button{
+    background-color: var(--white);
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+}
+button:hover, #filter-sort-button:hover,
+#reverse-alphabetical-sort:hover, #alphabetical-sort:hover{
+    box-shadow: 0 0 2px 0 black inset;
+}
+.artist-buttons, .album-buttons{
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(4, auto);
+}
+.grid-container article button,
+#detail-dialog__buttons button,
+.dialog-close-button{
+    width: 3em;
+    height: 3em;
+}
+.grid-container article button img,
+.dialog-close-button img{
+    width: 100%;
+}
+.delete-button:hover{
+    background-color: var(--red);
+}
+.edit-button:hover{
+    background-color: var(--yellow);
+}
 /* ========== MAIN CONTENT STYLES ========== */
 main{
     padding-top: 12vh;
@@ -164,7 +216,7 @@ main{
 }
 
 .grid-container article{
-    padding: 1em 1em 0 1em;
+    padding: 1em 1em 3em 1em;
     position: relative;
     max-width: 90vw;
     min-height: 25vh;
