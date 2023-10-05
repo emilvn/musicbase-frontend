@@ -1,12 +1,31 @@
-import {artists, getArtists, searchArtists} from "../rest-service/artists.restservice.js";
-import {albums, getAlbums} from "../rest-service/albums.restservice.js";
-import {getTracks, searchTracks, tracks} from "../rest-service/tracks.restservice.js";
-import {displayArtists} from "../view/artists.view.js";
-import {displayAlbums} from "../view/albums.view.js";
 import {getAlbumsToDisplay} from "./getalbums.js";
 import {ListRenderer} from "../view/ListRenderer.js";
 import {ArtistRenderer} from "../view/ArtistRenderer.js";
 import {AlbumRenderer} from "../view/AlbumRenderer.js";
+import {DataService} from "../rest-service/DataService.js";
+import {Artist} from "../models/Artist.js";
+import {Album} from "../models/Album.js";
+import {Track} from "../models/Track.js";
+
+
+/**
+ * variable to locally cache artists
+ * @type {Artist[]}
+ */
+export let artists = [];
+
+/**
+ * variable to locally cache albums
+ * @type {Album[]}
+ */
+export let albums = [];
+
+/**
+ * variable to locally cache tracks
+ * @type {Track[]}
+ */
+export let tracks = [];
+
 
 /**
  * updates the grids with the newest data from the database
@@ -14,10 +33,13 @@ import {AlbumRenderer} from "../view/AlbumRenderer.js";
  * @throws {Error} rethrows error from rest functions to be caught further up
  */
 export async function updateView(){
+	const ArtistDataService = new DataService("/artists", Artist);
+	const AlbumDataService = new DataService("/albums", Album);
+	const TrackDataService = new DataService("/tracks", Track);
 	try{
-		await getArtists();
-		await getAlbums();
-		await getTracks();
+		artists = await ArtistDataService.getAll();
+		albums = await AlbumDataService.getAll();
+		tracks = await TrackDataService.getAll();
 	}
 	catch (err){
 		throw err;
@@ -34,12 +56,19 @@ export async function updateView(){
  * @returns {Promise<void>}
  */
 export async function updateViewFromSearch(searchValue){
+	const ArtistDataService = new DataService("/artists", Artist);
+	const AlbumDataService = new DataService("/albums", Album);
+	const TrackDataService = new DataService("/tracks", Track);
 	try{
-		const artistsToDisplay = await searchArtists(searchValue);
-		const tracksSearched = await searchTracks(searchValue);
-		const albumsToDisplay = await getAlbumsToDisplay(searchValue, artistsToDisplay, tracksSearched);
-		displayArtists(artistsToDisplay);
-		displayAlbums(albumsToDisplay, tracks);
+		const artistsToDisplay = await ArtistDataService.search(searchValue);
+		const tracksSearched = await TrackDataService.search(searchValue);
+		const albumsSearched = await AlbumDataService.search(searchValue);
+		const albumsToDisplay = await getAlbumsToDisplay(albumsSearched, artistsToDisplay, tracksSearched);
+
+		const ArtistListRenderer = new ListRenderer(artistsToDisplay, document.querySelector("#artist-grid"), ArtistRenderer);
+		const AlbumListRenderer = new ListRenderer(albumsToDisplay, document.querySelector("#album-grid"), AlbumRenderer);
+		ArtistListRenderer.render();
+		AlbumListRenderer.render();
 	}
 	catch (err){
 		throw err;

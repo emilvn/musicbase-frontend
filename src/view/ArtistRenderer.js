@@ -16,5 +16,6 @@ export class ArtistRenderer{
 	}
 	postRender(element){
 		element.style.backgroundImage = `url(${this.item.image})`;
+		//TODO: add event listeners for buttons
 	}
 }

@@ -23,5 +23,6 @@ export class AlbumRenderer{
 		const TrackListRenderer = new ListRenderer(this.item.tracks, element.querySelector("ul"), TrackRenderer);
 		TrackListRenderer.render();
 		element.style.backgroundImage = `url(${this.item.image})`;
+		//TODO: add event listeners for buttons
 	}
 }

@@ -1,16 +1,15 @@
-import {albums, searchAlbums} from "../rest-service/albums.restservice.js";
+import {albums} from "./updateview.js";
 
 /**
  * get all albums where either the artist, the album name or a track on the album, matches the search
- * @param {string} searchValue
+ * @param {Album[]} albumsSearched
  * @param {Artist[]} artistsSearched
  * @param {Track[]} tracksSearched
  * @returns {Promise<Album[]>}
  * @throws {Error} rethrows error from search to be handled further up
  */
-export async function getAlbumsToDisplay(searchValue, artistsSearched, tracksSearched){
+export async function getAlbumsToDisplay(albumsSearched, artistsSearched, tracksSearched){
 	try{
-		const albumsSearched = await searchAlbums(searchValue);
 		const artistAlbums = getAlbumsFromArtists(albums, artistsSearched);
 		const trackAlbums = getAlbumsFromTracks(albums, tracksSearched);
 
@@ -68,7 +67,7 @@ function getAlbumsFromTracks(albums, tracks){
 function getAlbumsFromArtists(albums, artists){
 	const albumsFromArtists = [];
 	for(const album of albums){
-		if(!artists.find(artist => album.artist_names.includes(artist.name))){
+		if(!artists.find(artist => album.artists.find(a => a.name === artist.name))){
 			continue;
 		}
 		albumsFromArtists.push(album);
