@@ -4,6 +4,9 @@ import {getTracks, searchTracks, tracks} from "../rest-service/tracks.restservic
 import {displayArtists} from "../view/artists.view.js";
 import {displayAlbums} from "../view/albums.view.js";
 import {getAlbumsToDisplay} from "./getalbums.js";
+import {ListRenderer} from "../view/ListRenderer.js";
+import {ArtistRenderer} from "../view/ArtistRenderer.js";
+import {AlbumRenderer} from "../view/AlbumRenderer.js";
 
 /**
  * updates the grids with the newest data from the database
@@ -19,8 +22,10 @@ export async function updateView(){
 	catch (err){
 		throw err;
 	}
-	displayArtists(artists);
-	displayAlbums(albums, tracks);
+	const ArtistListRenderer = new ListRenderer(artists, document.querySelector("#artists"), ArtistRenderer);
+	const AlbumListRenderer = new ListRenderer(albums, document.querySelector("#albums"), AlbumRenderer);
+	ArtistListRenderer.render();
+	AlbumListRenderer.render();
 }
 
 /**

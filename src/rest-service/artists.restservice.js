@@ -1,4 +1,5 @@
 import {endpoint} from "../../main.js";
+import {Artist} from "../models/Artist.js";
 
 /**
  * variable to locally cache artists
@@ -16,7 +17,7 @@ export async function getArtists(){
 	if(!res.ok){
 		throw await res.json();
 	}
-	artists = await res.json();
+	artists = (await res.json()).map(artist => new Artist(artist));
 }
 
 /**

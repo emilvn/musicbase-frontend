@@ -1,4 +1,5 @@
 import {endpoint} from "../../main.js";
+import {Album} from "../models/Album.js";
 
 /**
  * variable to locally cache albums
@@ -12,11 +13,11 @@ export let albums = [];
  * @throws {Error} error object received from server
  */
 export async function getAlbums(){
-	const res = await fetch(endpoint + "/albums");
+	const res = await fetch(endpoint + "/albums/complete");
 	if(!res.ok){
 		throw await res.json();
 	}
-	albums = await res.json();
+	albums = (await res.json()).map(album => new Album(album));
 }
 
 /**
