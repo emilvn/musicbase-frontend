@@ -52,7 +52,6 @@ export class ListRenderer{
 			? definedPropertyRenderers.sort(sortDictionary[sortBy].sortAscending)
 			: definedPropertyRenderers.sort(sortDictionary[sortBy].sortDescending);
 
-
 		this.#_renderers = definedPropertyRenderers.concat(undefinedPropertyRenderers);
 		this.clear();
 		this.render();
