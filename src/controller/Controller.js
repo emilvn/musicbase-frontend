@@ -15,7 +15,7 @@ export class Controller{
 			this.initView(items);
 		}
 		catch (err){
-			console.log(err);
+			throw err;
 		}
 	}
 	initView(items){
@@ -34,11 +34,10 @@ export class Controller{
 	async searchView(searchValue){
 		try{
 			const items = await this.#_ItemDataService.search(searchValue);
-			console.log(items);
 			this.initView(items);
 		}
 		catch (err){
-			console.log(err);
+			throw err;
 		}
 	}
 

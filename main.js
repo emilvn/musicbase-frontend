@@ -5,6 +5,8 @@ import {Track} from "./src/models/Track.js";
 import {ArtistRenderer} from "./src/view/renderers/ArtistRenderer.js";
 import {AlbumRenderer} from "./src/view/renderers/AlbumRenderer.js";
 import {Controller} from "./src/controller/Controller.js";
+import {TrackRenderer} from "./src/view/renderers/TrackRenderer.js";
+import {TabUtility} from "./src/view/TabUtility.js";
 
 window.addEventListener("load", main);
 
@@ -14,52 +16,35 @@ window.addEventListener("load", main);
  */
 export const endpoint = "http://localhost:3000";
 
-/**
- * variable to locally cache artists
- * @type {Artist[]}
- */
-export let artists = [];
-
-/**
- * variable to locally cache albums
- * @type {Album[]}
- */
-export let albums = [];
-
-/**
- * variable to locally cache tracks
- * @type {Track[]}
- */
-export let tracks = [];
-
 
 /**
  * Initialize app
  * @returns {Promise<void>}
  */
 async function main(){
+	TabUtility.initTabs();
+
 	const ArtistDataService = new DataService("/artists", Artist);
 	const AlbumDataService = new DataService("/albums", Album);
 	const TrackDataService = new DataService("/tracks", Track);
 
-	try{
-		artists = await ArtistDataService.getAll();
-		albums = await AlbumDataService.getAll();
-		tracks = await TrackDataService.getAll();
+	try {
+		const ArtistController = new Controller(ArtistDataService, ArtistRenderer, document.querySelector("#artist-grid"));
+		const AlbumController = new Controller(AlbumDataService, AlbumRenderer, document.querySelector("#album-grid"));
+		const TrackController = new Controller(TrackDataService, TrackRenderer, document.querySelector("#track-grid"));
+
+		await ArtistController.init();
+		await AlbumController.init();
+		await TrackController.init();
+
+		document.querySelector("#artist-search")
+			.addEventListener("search", (event) => {
+				ArtistController.search(event.target.value);
+				AlbumController.search(event.target.value);
+				TrackController.search(event.target.value);
+			});
 	}
 	catch (err){
-		throw err;
+		console.dir(err);
 	}
-
-	const ArtistController = new Controller(ArtistDataService, ArtistRenderer, document.querySelector("#artist-grid"));
-	const AlbumController = new Controller(AlbumDataService, AlbumRenderer, document.querySelector("#album-grid"));
-
-	await ArtistController.init();
-	await AlbumController.init();
-
-	document.querySelector("#artist-search")
-		.addEventListener("search", (event) => {
-			ArtistController.search(event.target.value);
-			AlbumController.search(event.target.value);
-		});
 }

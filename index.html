@@ -22,15 +22,23 @@
         </div>
     </header>
     <main>
-        <!--Artist grid container-->
-        <div>
-            <h2>Artists</h2>
-            <section class="grid-container" id="artist-grid"></section>
-        </div>
-        <!--Album grid container-->
-        <div>
-            <h2>Albums</h2>
-            <section class="grid-container" id="album-grid"></section>
+        <div id="tabs">
+            <h2 data-tab-show="artists">Artists</h2>
+            <h2 data-tab-show="albums">Albums</h2>
+            <h2 data-tab-show="tracks">Tracks</h2>
+
+            <!--Artist grid container-->
+            <div class="hide" id="artists">
+                <section class="grid-container" id="artist-grid"></section>
+            </div>
+            <!--Album grid container-->
+            <div class="hide" id="albums">
+                <section class="grid-container" id="album-grid"></section>
+            </div>
+            <!--Track grid container-->
+            <div class="hide" id="tracks">
+                <ul class="grid-container hide" id="track-grid"></ul>
+            </div>
         </div>
     </main>
     <footer>

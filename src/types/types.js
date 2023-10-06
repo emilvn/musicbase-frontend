@@ -18,5 +18,4 @@
  * @typedef Track
  * @property {number} id unique id of track
  * @property {string} name name of track
- * @property {number || null} album_id id of album the track is on
  */
