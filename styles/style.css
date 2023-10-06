@@ -166,13 +166,25 @@ main{
     border-bottom: 2px solid var(--orange);
     padding-bottom: 1em;
 }
+#track-grid{
+    padding-inline: unset;
+    margin-block: unset;
+    margin-top: 0;
+    padding-top: 1em;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    border-bottom: 2px solid var(--orange);
+    max-width: 100vw;
+}
 
 #track-grid li{
+    margin: 0 1em 0.5em 1em;
     list-style: none;
     padding: 0.5em;
     border-radius: 0.5em;
-    background-color: var(--white);
-    margin-bottom: 0.5em;
+    background-color: var(--light-grey);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -275,7 +287,7 @@ main{
     border-bottom: 1px solid var(--dark-blue);
 }
 
-#tabs section, #tabs>ul {
+#tabs>div>section, #tabs>div>ul {
     top: 1vh;
     left: 0;
     width: 100%;
