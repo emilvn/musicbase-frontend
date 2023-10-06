@@ -1,4 +1,4 @@
-import {sortDictionary} from "../helpers/sort-dictionary.js";
+import {sortDictionary} from "../../helpers/sort-dictionary.js";
 
 export class ListRenderer{
 	#_renderers;
