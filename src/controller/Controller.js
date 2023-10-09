@@ -24,13 +24,16 @@ export class Controller{
 		ItemListRenderer.clear();
 		ItemListRenderer.render();
 	}
-	async search(searchString) {
+	search(searchString) {
 		if(searchString != "") {
 			this.init();
 		} else {
-			const items = this.#DataService.search(searchString);
-			
+			this.searchView(searchString)
 		}
+	}
+	async searchView(searchString) {
+		const items = await this.#DataService.search(searchString);
+		initViews(items);
 	}
 
 	
