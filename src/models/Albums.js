@@ -14,15 +14,12 @@ export class Album extends Item{
     ? AlbumData.tracks.map(track => new Track(track))
     : [];
 	}
-
 	get image(){
 		return this._image;
 	}
-
    get artistNames() {
       return this._artists.map(artist => artist.name);
     }
-
 	get tracks(){
 		return this._tracks.map(track => new Track(track));
 	}
