@@ -2,14 +2,14 @@ import {ListRenderer} from "../view/renderers/ListRenderer.js";
 import { DataService } from "../rest-service/DataService.js";
 
 export class Controller{
-	#DataService;
-	#uri;
 	#ItemModel;
-	#Container;
-	constructor(uri, itemModel, container) {
+	#uri;
+	#container;
+	#DataService;
+	constructor(ItemModel, uri, container) {
+		this.#ItemModel = ItemModel;
 		this.#uri = uri;
-		this.#ItemModel = temModel;
-		this.#Container = container;
+		this.#container = container;
 		this.#DataService = new DataService(this.#uri, this.#ItemModel);
 	}
 
