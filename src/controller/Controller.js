@@ -20,7 +20,17 @@ export class Controller{
  		initView(items);
 	}
 	initView(items) {
-		const ItemListRenderer = new ListRenderer()
+		const ItemListRenderer = new ListRenderer(items, this.#container, this.#ItemRenderer);
+		ItemListRenderer.clear();
+		ItemListRenderer.render();
+	}
+	async search(searchString) {
+		if(searchString != "") {
+			this.init();
+		} else {
+			const items = this.#DataService.search(searchString);
+			
+		}
 	}
 
 	
