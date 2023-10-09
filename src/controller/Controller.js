@@ -4,12 +4,14 @@ import { DataService } from "../rest-service/DataService.js";
 export class Controller{
 	#ItemModel;
 	#uri;
+	#ItemRenderer;
 	#container;
 	#DataService;
-	#ItemListRenderer;
-	constructor(ItemModel, uri, container) {
+	
+	constructor(ItemModel, uri, ItemRenderer, container) {
 		this.#ItemModel = ItemModel;
 		this.#uri = uri;
+		this.#ItemRenderer = ItemRenderer;
 		this.#container = container;
 		this.#DataService = new DataService(this.#uri, this.#ItemModel);
 	}
@@ -18,7 +20,7 @@ export class Controller{
  		initView(items);
 	}
 	initView(items) {
-		this.#ItemListRenderer = new ListRenderer()
+		const ItemListRenderer = new ListRenderer()
 	}
 
 	
