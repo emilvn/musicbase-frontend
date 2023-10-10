@@ -1,5 +1,4 @@
-import {setEventListeners} from "./src/controller/seteventlisteners.js";
-import {search} from "./src/controller/search";
+import {TabUtility} from "./src/view/TabUtility.js";
 
 window.addEventListener("load", main);
 
@@ -14,6 +13,6 @@ export const endpoint = "https://musicbase-backend.azurewebsites.net";
  * @returns {Promise<void>}
  */
 async function main(){
-	document.querySelector("#artist-search")
-		.addEventListener("search", search);
+	TabUtility.initTabs();
+
 }
