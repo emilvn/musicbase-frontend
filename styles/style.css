@@ -63,6 +63,23 @@ header{
 #artist-search:focus{
     outline: none;
 }
+#add-album-button, #add-artist-button{
+    aspect-ratio: 1;
+    min-height: 4em;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--white);
+}
+#add-album-button{
+    background-image: url("../icons/add-album-icon.png");
+}
+#add-artist-button{
+    background-image: url("../icons/add-artist-icon.png");
+}
+#add-album-button:hover, #add-artist-button:hover{
+    background-color: var(--light-grey);
+}
 
 @media (max-width: 420px) {
     header {
@@ -83,21 +100,57 @@ header{
     }
 }
 
+/* ========== BUTTON STYLES ========== */
 
+button{
+    background-color: var(--white);
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+}
+button:hover, #filter-sort-button:hover,
+#reverse-alphabetical-sort:hover, #alphabetical-sort:hover{
+    box-shadow: 0 0 2px 0 black inset;
+}
+.artist-buttons, .album-buttons{
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(4, auto);
+}
+.grid-container article button,
+#detail-dialog__buttons button,
+.dialog-close-button{
+    width: 3em;
+    height: 3em;
+}
+.grid-container article button img,
+.dialog-close-button img{
+    width: 100%;
+}
+.delete-button:hover{
+    background-color: var(--red);
+}
+.edit-button:hover{
+    background-color: var(--yellow);
+}
 /* ========== MAIN CONTENT STYLES ========== */
 main{
-    padding-top: 12vh;
+    padding-top: 15vh;
+    min-height: 71vh;
 }
 @media (max-width: 420px) {
     main{
-        padding-top: 25vh;
+        padding-top: 28vh;
     }
 }
 
 /* ========== GRID STYLES ========== */
 
 #artist-grid{
-    margin: 1em;
+    padding-top: 1em;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
@@ -106,12 +159,37 @@ main{
 }
 
 #album-grid{
-    margin: 1em;
+    padding-top: 1em;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1em;
     border-bottom: 2px solid var(--orange);
     padding-bottom: 1em;
+}
+#track-grid{
+    padding-inline: unset;
+    margin-block: unset;
+    margin-top: 0;
+    padding-top: 1em;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    border-bottom: 2px solid var(--orange);
+    max-width: 100vw;
+}
+
+#track-grid li{
+    margin: 0 1em 0.5em 1em;
+    list-style: none;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: var(--light-grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark-blue);
+    text-shadow: 1px 1px 0 var(--light-grey), 0 0 0 var(--light-grey);
 }
 
 @media (min-width: 550px){
@@ -164,13 +242,14 @@ main{
 }
 
 .grid-container article{
-    padding: 1em 1em 0 1em;
+    padding: 1em 1em 3em 1em;
     position: relative;
     max-width: 90vw;
     min-height: 25vh;
     background-size: cover;
     color: var(--white);
     text-shadow: 1px 1px 0 var(--dark-blue), 0 0 0 var(--dark-blue);
+    border-radius: 0.2em;
 }
 
 
@@ -183,10 +262,49 @@ main{
     margin: 0;
 }
 
+/* ========== TABS ========== */
+#tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#tabs h2 {
+    margin: 0;
+    padding: .5em;
+    cursor: pointer;
+}
+#tabs>div{
+    grid-column: span 3;
+}
+#tabs h2.selected {
+    border: 1px solid var(--dark-blue);
+    border-radius: 0.5em 0.5em 0 0;
+    border-bottom: none;
+    background-color: var(--white);
+}
+
+#tabs h2:not(.selected) {
+    border-bottom: 1px solid var(--dark-blue);
+}
+
+#tabs>div>section, #tabs>div>ul {
+    top: 1vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+}
+
+.hide {
+    display: none;
+}
+
 /* ========== FOOTER STYLES ========== */
 
 footer{
+    margin-top: 6.9vh;
     background-color: var(--dark-blue);
+    z-index: 999;
     color: var(--light-grey);
     padding: 1px;
     text-align: center;
