@@ -18,7 +18,9 @@ export class Album extends Item{
 		return this.#_image;
 	}
    get artistNames() {
-      return this.#_artists.map(artist => artist.name);
+      return this.#_artists.map(artist => artist.name).reduce((prev,curr)=> {
+        prev + curr + ', ', ''
+      }).slice(0, -2);
     }
 	get tracks(){
 		return this.#_tracks.map(track => new Track(track));
