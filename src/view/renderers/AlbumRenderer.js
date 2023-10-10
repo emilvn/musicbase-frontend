@@ -9,9 +9,13 @@ export class AlbumRenderer {
     render() {
         return `
         <article>
-        <h3>${this.item.name}</h3>
-        <p>Features: ${this.item.artistNames}</p>
-        <ul></ul>
+            <div>
+                <h3>${this.item.name}</h3>
+                <p class="artist-names">Features: ${this.item.artistNames}</p>
+            </div>
+            <div>
+                <ul></ul>
+            </div>
         </article>
         `
     }

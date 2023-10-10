@@ -1,6 +1,7 @@
 /* ========== GLOBAL STYLES ========== */
 :root{
-    --dark-blue: #011627;
+    --dark-blue: rgb(1, 22, 39);
+    --grey-opague: rgba(147, 147, 147, 0.46);
     --white: rgb(253, 255, 252);
     --cyan: #2ec4b6;
     --red: #e71d36;
@@ -16,7 +17,7 @@ html{
 
 body{
     background-color: var(--light-grey);
-    font-family: Cambria, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     color: var(--dark-blue);
 }
@@ -35,12 +36,15 @@ header{
     left: 0;
     display: flex;
     justify-content: space-between;
-    background-color: var(--white);
+    background-color: var(--dark-blue);
     align-items: center;
     padding: 2vh 0 2vh 0;
-    color: var(--dark-blue);
+    color: var(--white);
     z-index: 9999;
     user-select: none;
+}
+header h1{
+    margin: 1em;
 }
 #artist-search-div{
     background-color: var(--light-grey);
@@ -102,6 +106,7 @@ main{
     gap: 1em;
     border-bottom: 2px solid var(--orange);
     padding-bottom: 1em;
+    background-color: var(--light-grey);
 }
 
 #album-grid{
@@ -111,13 +116,18 @@ main{
     gap: 1em;
     border-bottom: 2px solid var(--orange);
     padding-bottom: 1em;
+    background-color: var(--light-grey);
+}
+#album-grid ul{
+    list-style: "-";
+    line-height: 1.5em;
 }
 #track-grid{
     padding-inline: unset;
     margin-block: unset;
     margin-top: 0;
     padding-top: 1em;
-    background-color: var(--white);
+    background-color: var(--light-grey);
     display: grid;
     grid-template-columns: 1fr;
     gap: 1em;
@@ -130,12 +140,11 @@ main{
     list-style: none;
     padding: 0.5em;
     border-radius: 0.5em;
-    background-color: var(--light-grey);
+    background-color: var(--dark-blue);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--dark-blue);
-    text-shadow: 1px 1px 0 var(--light-grey), 0 0 0 var(--light-grey);
+    color: var(--light-grey);
 }
 
 @media (min-width: 550px){
@@ -193,14 +202,44 @@ main{
     max-width: 90vw;
     min-height: 25vh;
     background-size: cover;
-    color: var(--white);
-    text-shadow: 1px 1px 0 var(--dark-blue), 0 0 0 var(--dark-blue);
+    color: var(--dark-blue);
     border-radius: 0.2em;
 }
+.grid-container h3{
+    margin: 0.5em;
+    padding: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--orange);
+}
+.grid-container article div{
+    background-color: var(--grey-opague);
+    width: 100%;
+    padding: 0.2em;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
 
+#album-grid .artist-names{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: 0.8em;
+    font-weight: 200;
+    color: var(--dark-blue);
+}
 
 #album-grid article{
-    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--light-grey);
+    border-radius: 0.5em;
+    color: var(--dark-blue);
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
 }
 #album-grid article div p{
     display: block;
@@ -223,14 +262,14 @@ main{
     grid-column: span 3;
 }
 #tabs h2.selected {
-    border: 1px solid var(--dark-blue);
-    border-radius: 0.5em 0.5em 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.44);
+    border-radius: 0.1em 0.1em 0 0;
     border-bottom: none;
-    background-color: var(--white);
+    background-color: var(--light-grey);
 }
 
 #tabs h2:not(.selected) {
-    border-bottom: 1px solid var(--dark-blue);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.44);
 }
 
 #tabs>div>section, #tabs>div>ul {
@@ -238,7 +277,7 @@ main{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--white);
+    background-color: var(--light-grey);
 }
 
 .hide {
