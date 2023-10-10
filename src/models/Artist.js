@@ -1,11 +1,11 @@
 import {Item} from "./Item.js";
 export class Artist extends Item{
-	_image;
+	#_image;
 	constructor(ArtistData){
 		super(ArtistData);
-		this.image = ArtistData.image;
+		this.#_image = ArtistData.image;
 	}
 	get image(){
-		return this._image;
+		return this.#_image;
 	}
 }
