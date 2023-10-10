@@ -4,8 +4,11 @@ export class ArtistRenderer{
         this.item = Artist
     }
     render() {
-        return `<article>
-                <h3>${this.item.name}</h3>
+        return `
+            <article>
+                <div>
+                    <h3>${this.item.name}</h3>
+                </div>
             </article>
         `
     }
