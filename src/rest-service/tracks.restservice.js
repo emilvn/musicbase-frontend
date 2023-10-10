@@ -16,7 +16,7 @@ export async function getTracks(){
 	if(!res.ok){
 		throw await res.json();
 	}
-	tracks = await res.json();
+	return await res.json();
 }
 
 /**

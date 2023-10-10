@@ -16,7 +16,7 @@ export async function getAlbums(){
 	if(!res.ok){
 		throw await res.json();
 	}
-	albums = await res.json();
+	return await res.json();
 }
 
 /**

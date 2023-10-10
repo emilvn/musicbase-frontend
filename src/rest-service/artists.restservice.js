@@ -16,7 +16,7 @@ export async function getArtists(){
 	if(!res.ok){
 		throw await res.json();
 	}
-	artists = await res.json();
+	return await res.json();
 }
 
 /**

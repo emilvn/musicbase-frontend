@@ -9,5 +9,6 @@ export class ArtistRenderer{
         `
     }
     postRender(element) {
+        element.style.backgroundImage = `url(${this.item.image})`;
     }
 }

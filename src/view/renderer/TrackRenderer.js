@@ -8,7 +8,4 @@ export class TrackRenderer {
         <h3>${this.item.name}</h3>
         `
     }
-    postRender(element) {
-
-    }
 }

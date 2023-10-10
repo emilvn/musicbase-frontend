@@ -10,13 +10,16 @@ export class AlbumRenderer {
         return `
         <article>
         <h3>${this.item.name}</h3>
-        <p>Features: ${this.item.artist_names.map(name => " "+name)}</p>
+        <p>Features: ${this.item.artists.map(artist => " "+artist.name)}</p>
         <ul></ul>
         </article>
         `
     }
     postRender(element) {
-        const TrackListRenderer = new ListRenderer(this.item.track, element.querySelector("ul"), TrackRenderer)
-        TrackListRenderer.render()
+        if(Array.isArray(this.item.tracks)){
+            const TrackListRenderer = new ListRenderer(this.item.tracks, element.querySelector("ul"), TrackRenderer)
+            TrackListRenderer.render()
+        }
+        element.style.backgroundImage = `url(${this.item.image})`
     }
 }
