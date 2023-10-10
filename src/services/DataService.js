@@ -1,5 +1,5 @@
 export class DataService{
-	static endpoint = "musicbase-backend.azurewebsites.net";
+	static endpoint = "https://musicbase-backend.azurewebsites.net";
 	#_url;
 	#_uri;
 	#_Model;

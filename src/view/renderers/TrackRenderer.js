@@ -5,7 +5,7 @@ export class TrackRenderer {
     }
     render() {
         return `
-        <h3>${this.item.name}</h3>
+        <li>${this.item.name}</li>
         `
     }
 }

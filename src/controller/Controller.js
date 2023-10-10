@@ -1,5 +1,5 @@
 import {ListRenderer} from "../view/renderers/ListRenderer.js";
-import { DataService } from "../rest-service/DataService.js";
+import { DataService } from "../services/DataService.js";
 
 export class Controller{
 	#ItemModel;
@@ -17,7 +17,7 @@ export class Controller{
 	}
 	async init() {
 		const items = await this.#DataService.getAll()
- 		initView(items);
+ 		this.initView(items);
 	}
 	initView(items) {
 		const ItemListRenderer = new ListRenderer(items, this.#container, this.#ItemRenderer);
@@ -25,7 +25,7 @@ export class Controller{
 		ItemListRenderer.render();
 	}
 	search(searchString) {
-		if(searchString != "") {
+		if(searchString === "") {
 			this.init();
 		} else {
 			this.searchView(searchString)
@@ -33,7 +33,7 @@ export class Controller{
 	}
 	async searchView(searchString) {
 		const items = await this.#DataService.search(searchString);
-		initViews(items);
+		this.initView(items);
 	}
 
 	

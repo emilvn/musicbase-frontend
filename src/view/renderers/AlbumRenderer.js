@@ -10,7 +10,7 @@ export class AlbumRenderer {
         return `
         <article>
         <h3>${this.item.name}</h3>
-        <p>Features: ${this.item.artists.map(artist => " "+artist.name)}</p>
+        <p>Features: ${this.item.artistNames}</p>
         <ul></ul>
         </article>
         `
@@ -20,6 +20,6 @@ export class AlbumRenderer {
             const TrackListRenderer = new ListRenderer(this.item.tracks, element.querySelector("ul"), TrackRenderer)
             TrackListRenderer.render()
         }
-        element.style.backgroundImage = `url(${this.item.image})`
+        element.style.backgroundImage = `url("${this.item.image}")`
     }
 }
