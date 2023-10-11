@@ -6,11 +6,11 @@ export class ListRenderer {
         this.#_renderers = list.map(item => new ItemRenderer(item))
     }
     render() {
-            this.#_renderers.forEach(ItemRenderer => {
-                const html = ItemRenderer.render()
+            this.#_renderers.forEach(itemRenderer => {
+                const html = itemRenderer.render()
                 this.#_container.insertAdjacentHTML("beforeend", html)
                 const element = this.#_container.lastElementChild
-                if(ItemRenderer.postRender !== undefined) ItemRenderer.postRender(element);
+                if(itemRenderer.postRender !== undefined) itemRenderer.postRender(element);
             })
         }
 

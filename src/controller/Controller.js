@@ -6,17 +6,17 @@ export class Controller{
 	#uri;
 	#ItemRenderer;
 	#container;
-	#DataService;
+	#dataService;
 	
 	constructor(ItemModel, uri, ItemRenderer, container) {
 		this.#ItemModel = ItemModel;
 		this.#uri = uri;
 		this.#ItemRenderer = ItemRenderer;
 		this.#container = container;
-		this.#DataService = new DataService(this.#uri, this.#ItemModel);
+		this.#dataService = new DataService(this.#uri, this.#ItemModel);
 	}
 	async init() {
-		const items = await this.#DataService.getAll()
+		const items = await this.#dataService.getAll()
  		this.initView(items);
 	}
 	initView(items) {
@@ -32,7 +32,7 @@ export class Controller{
 		}
 	}
 	async searchView(searchString) {
-		const items = await this.#DataService.search(searchString);
+		const items = await this.#dataService.search(searchString);
 		this.initView(items);
 	}
 

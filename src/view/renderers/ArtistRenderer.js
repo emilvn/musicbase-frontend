@@ -1,7 +1,7 @@
 export class ArtistRenderer{
     item;
-    constructor(Artist) {
-        this.item = Artist
+    constructor(artist) {
+        this.item = artist
     }
     render() {
         return `

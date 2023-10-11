@@ -1,7 +1,7 @@
 export class TrackRenderer {
     item;
-    constructor(Track) {
-        this.item = Track
+    constructor(track) {
+        this.item = track;
     }
     render() {
         return `

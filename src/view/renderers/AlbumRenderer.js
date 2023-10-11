@@ -3,8 +3,8 @@ import {TrackRenderer} from "./TrackRenderer.js";
 
 export class AlbumRenderer {
     item;
-    constructor(Album) {
-        this.item = Album
+    constructor(album) {
+        this.item = album;
     }
     render() {
         return `
@@ -21,8 +21,8 @@ export class AlbumRenderer {
     }
     postRender(element) {
         if(Array.isArray(this.item.tracks)){
-            const TrackListRenderer = new ListRenderer(this.item.tracks, element.querySelector("ul"), TrackRenderer)
-            TrackListRenderer.render()
+            const trackListRenderer = new ListRenderer(this.item.tracks, element.querySelector("ul"), TrackRenderer)
+            trackListRenderer.render()
         }
         element.style.backgroundImage = `url("${this.item.image}")`
     }
