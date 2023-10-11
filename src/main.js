@@ -1,11 +1,11 @@
-import {TabUtility} from "./src/view/TabUtility.js";
-import {Controller} from "./src/controller/Controller.js";
-import {ArtistRenderer} from "./src/view/renderers/ArtistRenderer.js";
-import {AlbumRenderer} from "./src/view/renderers/AlbumRenderer.js";
-import {TrackRenderer} from "./src/view/renderers/TrackRenderer.js";
-import {Artist} from "./src/models/Artist.js";
-import {Album} from "./src/models/Albums.js";
-import {Track} from "./src/models/Track.js";
+import {TabUtility} from "./view/TabUtility.js";
+import {Controller} from "./controller/Controller.js";
+import {ArtistRenderer} from "./view/renderers/ArtistRenderer.js";
+import {AlbumRenderer} from "./view/renderers/AlbumRenderer.js";
+import {TrackRenderer} from "./view/renderers/TrackRenderer.js";
+import {Artist} from "./models/Artist.js";
+import {Album} from "./models/Albums.js";
+import {Track} from "./models/Track.js";
 
 
 window.addEventListener("load", main);
