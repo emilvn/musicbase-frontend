@@ -22,9 +22,9 @@ async function main(){
 
 	document.querySelector("#artist-search")
 		.addEventListener("search", (event) => {
-			ArtistController.search(event.target.value);
-			AlbumController.search(event.target.value);
-			TrackController.search(event.target.value);
+			ArtistController.search(event.target.value).catch(err=> console.error(err));
+			AlbumController.search(event.target.value).catch(err=> console.error(err));
+			TrackController.search(event.target.value).catch(err=> console.error(err));
 		});
 
 	ArtistController.init().catch(err=> console.error(err));

@@ -42,7 +42,7 @@ export class Controller{
  			this.initView(items);
 		}
 		catch(err){
-			throw err;
+			throw new Error(`Error initializing ${this.#uri}: ${err}`);
 		}
 	}
 
@@ -60,11 +60,11 @@ export class Controller{
 	 * Handle search event
 	 * @param {string} searchString
 	 */
-	search(searchString) {
+	async search(searchString) {
 		if(searchString === "") {
-			this.init();
+			this.init().catch(err => throw err);
 		} else {
-			this.searchView(searchString)
+			this.searchView(searchString).catch(err => throw err);
 		}
 	}
 
@@ -79,9 +79,7 @@ export class Controller{
 			this.initView(items);
 		}
 		catch(err){
-			throw err;
+			throw new Error(`Error searching for ${this.#uri}: ${err}`);
 		}
 	}
-
-	
 }
