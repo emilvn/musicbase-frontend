@@ -13,7 +13,7 @@ export class ListRenderer {
      * ListRenderer constructor
      * @param {Item[]} list list of items
      * @param {HTMLElement} container container to render the items in
-     * @param {typeof ItemRenderer} IRenderer constructor for the ItemRenderer
+     * @param {Function} IRenderer constructor for the ItemRenderer
      * @constructs ListRenderer
      */
     constructor(list, container, IRenderer) {

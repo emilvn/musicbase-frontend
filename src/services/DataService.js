@@ -18,7 +18,7 @@ export class DataService{
 	/**
 	 * DataService constructor
 	 * @param {string} uri uri of the endpoint
-	 * @param {typeof Item}Model constructor for the item
+	 * @param {Function}Model constructor for the item
 	 * @constructs DataService
 	 */
 	constructor(uri, Model){
