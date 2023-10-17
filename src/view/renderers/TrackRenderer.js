@@ -15,6 +15,12 @@ export class TrackRenderer {
     constructor(track) {
         this.item = track;
     }
+
+    /**
+     * Render the track
+     * @returns {string} HTML string of the track
+     * @override
+     */
     render() {
         return `
         <li>${this.item.name}</li>

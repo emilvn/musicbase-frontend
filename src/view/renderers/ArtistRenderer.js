@@ -15,6 +15,12 @@ export class ArtistRenderer{
     constructor(artist) {
         this.item = artist
     }
+
+    /**
+     * Render the artist
+     * @returns {string} HTML string of the artist
+     * @override
+     */
     render() {
         return `
             <article>
@@ -24,6 +30,12 @@ export class ArtistRenderer{
             </article>
         `
     }
+
+    /**
+     * Post render the artist
+     * @param {HTMLElement} element
+     * @override
+     */
     postRender(element) {
         element.style.backgroundImage = `url(${this.item.image})`;
     }

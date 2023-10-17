@@ -18,6 +18,12 @@ export class AlbumRenderer {
     constructor(album) {
         this.item = album;
     }
+
+    /**
+     * Render the album
+     * @returns {string} HTML string of the album
+     * @override
+     */
     render() {
         return `
         <article>
@@ -31,6 +37,12 @@ export class AlbumRenderer {
         </article>
         `
     }
+
+    /**
+     * Post render the album
+     * @param {HTMLElement} element
+     * @override
+     */
     postRender(element) {
         if(Array.isArray(this.item.tracks)){
             const trackListRenderer = new ListRenderer(this.item.tracks, element.querySelector("ul"), TrackRenderer)

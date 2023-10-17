@@ -32,17 +32,29 @@ export class Controller{
 		this.#dataService = new DataService(this.#uri, this.#ItemModel);
 	}
 
+	/**
+	 * Initialize the controller
+	 * @returns {Promise<void>}
+	 */
 	async init() {
 		const items = await this.#dataService.getAll()
  		this.initView(items);
 	}
 
+	/**
+	 * Initialize the view
+	 * @param {Item[]} items
+	 */
 	initView(items) {
 		const ItemListRenderer = new ListRenderer(items, this.#container, this.#ItemRenderer);
 		ItemListRenderer.clear();
 		ItemListRenderer.render();
 	}
 
+	/**
+	 * Handle search event
+	 * @param {string} searchString
+	 */
 	search(searchString) {
 		if(searchString === "") {
 			this.init();
@@ -51,6 +63,11 @@ export class Controller{
 		}
 	}
 
+	/**
+	 * Search for items
+	 * @param {string} searchString
+	 * @returns {Promise<void>}
+	 */
 	async searchView(searchString) {
 		const items = await this.#dataService.search(searchString);
 		this.initView(items);
