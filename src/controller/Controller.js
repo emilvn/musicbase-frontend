@@ -20,7 +20,7 @@ export class Controller{
 	 * Controller constructor
 	 * @param {Function} ItemModel Model constructor for the item
 	 * @param {string} uri uri of the endpoint
-	 * @param {typeof ItemRenderer} ItemRenderer Renderer constructor for the item
+	 * @param {Function} ItemRenderer Renderer constructor for the item
 	 * @param {HTMLElement} container container to render the items in
 	 * @constructs Controller
 	 */
