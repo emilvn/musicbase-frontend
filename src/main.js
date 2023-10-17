@@ -7,14 +7,7 @@ import {Artist} from "./models/Artist.js";
 import {Album} from "./models/Albums.js";
 import {Track} from "./models/Track.js";
 
-
 window.addEventListener("load", main);
-
-/**
- * endpoint of server
- * @type {string}
- */
-export const endpoint = "https://musicbase-backend.azurewebsites.net";
 
 /**
  * Initialize app

@@ -1,5 +1,17 @@
+/**
+ * ArtistRenderer class
+ * @class
+ * @property {Artist} item
+ * @implements {ItemRenderer}
+ */
 export class ArtistRenderer{
     item;
+
+    /**
+     * ArtistRenderer constructor
+     * @param {Artist} artist
+     * @constructs ArtistRenderer
+     */
     constructor(artist) {
         this.item = artist
     }

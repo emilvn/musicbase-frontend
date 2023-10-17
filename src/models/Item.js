@@ -1,14 +1,22 @@
+/**
+ * Abstract class for all items
+ * @class
+ * @abstract
+ * @property {number} id unique id of item
+ * @property {string} name name of item
+ * @hideconstructor
+ */
 export class Item{
-	#_id;
-	#_name;
+	#id;
+	#name;
 	constructor(ItemData){
-		this.#_id = ItemData.id;
-		this.#_name = ItemData.name;
+		this.#id = ItemData.id;
+		this.#name = ItemData.name;
 	}
 	get	id(){
-		return this.#_id;
+		return this.#id;
 	}
 	get name(){
-		return this.#_name;
+		return this.#name;
 	}
 }

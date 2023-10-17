@@ -1,20 +1,35 @@
+/**
+ * ListRenderer class
+ * @class
+ * @property {function} render function that renders a list of items
+ * @property {function} clear function that clears the list
+ * @property {ItemRenderer} ItemRenderer constructor for the ItemRenderer
+ */
 export class ListRenderer {
-    #_renderers;
-    #_container;
-    constructor(list, container, ItemRenderer) {
-        this.#_container = container
-        this.#_renderers = list.map(item => new ItemRenderer(item))
+    #renderers;
+    #container;
+
+    /**
+     * ListRenderer constructor
+     * @param {Item[]} list list of items
+     * @param {HTMLElement} container container to render the items in
+     * @param {typeof ItemRenderer} IRenderer constructor for the ItemRenderer
+     * @constructs ListRenderer
+     */
+    constructor(list, container, IRenderer) {
+        this.#container = container
+        this.#renderers = list.map(item => new IRenderer(item));
     }
     render() {
-            this.#_renderers.forEach(itemRenderer => {
+            this.#renderers.forEach(itemRenderer => {
                 const html = itemRenderer.render()
-                this.#_container.insertAdjacentHTML("beforeend", html)
-                const element = this.#_container.lastElementChild
+                this.#container.insertAdjacentHTML("beforeend", html)
+                const element = this.#container.lastElementChild
                 if(itemRenderer.postRender !== undefined) itemRenderer.postRender(element);
             })
         }
 
     clear() {
-        this.#_container.innerHTML = "";
+        this.#container.innerHTML = "";
     }
 }

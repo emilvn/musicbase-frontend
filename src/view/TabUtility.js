@@ -1,6 +1,17 @@
+/**
+ * Utility class for tabbed content.
+ * @class
+ * @static
+ * @hideconstructor
+ */
 export class TabUtility {
 	static selectedTab = null;
 
+	/**
+	 * Initializes the tabbed content.
+	 * @static
+	 * @method
+	 */
 	static initTabs() {
 		// setup tab-toggling
 		document.querySelectorAll("#tabs h2").forEach(tab => tab.addEventListener("click", TabUtility.selectTab));
@@ -8,6 +19,12 @@ export class TabUtility {
 		document.querySelector("#tabs h2").click();
 	}
 
+	/**
+	 * Selects a tab.
+	 * @param {Event} event
+	 * @static
+	 * @method
+	 */
 	static selectTab(event) {
 		const tab = event.target;
 		// only accept click, if tab isn't selected

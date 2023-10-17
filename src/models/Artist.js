@@ -1,11 +1,26 @@
 import {Item} from "./Item.js";
+
+/**
+ * Artist class
+ * @class
+ * @extends Item
+ * @property {string} image
+ * @property {string} name
+ * @property {number} id
+ */
 export class Artist extends Item{
-	#_image;
+	#image;
+
+	/**
+	 * Artist constructor
+	 * @param {ArtistData} ArtistData
+	 * @constructs Artist
+	 */
 	constructor(ArtistData){
 		super(ArtistData);
-		this.#_image = ArtistData.image;
+		this.#image = ArtistData.image;
 	}
 	get image(){
-		return this.#_image;
+		return this.#image;
 	}
 }

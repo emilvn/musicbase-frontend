@@ -1,8 +1,20 @@
 import {ListRenderer} from "./ListRenderer.js";
 import {TrackRenderer} from "./TrackRenderer.js";
 
+/**
+ * AlbumRenderer class
+ * @class
+ * @property {Album} item
+ * @implements {ItemRenderer}
+ */
 export class AlbumRenderer {
     item;
+
+    /**
+     * AlbumRenderer constructor
+     * @param {Album} album
+     * @constructs AlbumRenderer
+     */
     constructor(album) {
         this.item = album;
     }
