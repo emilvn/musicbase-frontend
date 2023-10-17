@@ -24,5 +24,5 @@
  * @typedef ItemRenderer
  * @property {function} render function that returns a string of html
  * @property {function} postRender function that takes an element and modifies it
- * @property {ArtistData|AlbumData|TrackData} item the item to render
+ * @property {Item} item the item to render
  */
