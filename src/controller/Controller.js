@@ -61,10 +61,15 @@ export class Controller{
 	 * @param {string} searchString
 	 */
 	async search(searchString) {
-		if(searchString === "") {
-			this.init().catch(err => throw err);
-		} else {
-			this.searchView(searchString).catch(err => throw err);
+		try {
+			if(searchString === "") {
+				await this.init();
+			} else {
+				await this.searchView(searchString);
+			}
+		}
+		catch (err){
+			throw err;
 		}
 	}
 
