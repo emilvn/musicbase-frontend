@@ -37,8 +37,13 @@ export class Controller{
 	 * @returns {Promise<void>}
 	 */
 	async init() {
-		const items = await this.#dataService.getAll()
- 		this.initView(items);
+		try{
+			const items = await this.#dataService.getAll()
+ 			this.initView(items);
+		}
+		catch(err){
+			throw err;
+		}
 	}
 
 	/**
@@ -69,8 +74,13 @@ export class Controller{
 	 * @returns {Promise<void>}
 	 */
 	async searchView(searchString) {
-		const items = await this.#dataService.search(searchString);
-		this.initView(items);
+		try{
+			const items = await this.#dataService.search(searchString);
+			this.initView(items);
+		}
+		catch(err){
+			throw err;
+		}
 	}
 
 	

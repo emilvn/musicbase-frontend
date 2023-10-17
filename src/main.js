@@ -27,13 +27,7 @@ async function main(){
 			TrackController.search(event.target.value);
 		});
 
-	try {
-		await ArtistController.init();
-		await AlbumController.init();
-		await TrackController.init();
-
-	}
-	catch (err){
-		console.dir(err);
-	}
+	ArtistController.init().catch(err=> console.error(err));
+	AlbumController.init().catch(err=> console.error(err));
+	TrackController.init().catch(err=> console.error(err));
 }
